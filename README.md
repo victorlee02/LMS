@@ -60,7 +60,30 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-### 4. 서버 실행
+### 4. MySQL DB 생성
+
+MySQL에 접속 후 아래 명령어 실행:
+
+```sql
+CREATE DATABASE lms CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+```
+
+그리고 `config/settings.py`에서 본인 MySQL 비밀번호 입력:
+
+```python
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'lms',
+        'USER': 'root',
+        'PASSWORD': '본인 비밀번호 입력',
+        'HOST': 'localhost',
+        'PORT': '3306',
+    }
+}
+```
+
+### 5. 서버 실행
 
 ```bash
 python manage.py migrate
